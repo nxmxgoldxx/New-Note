@@ -9,30 +9,35 @@ class App extends Component {
   state = {
     notes: [
       {
-        id: 0,
-        title: "eat",
-        description: "reese peanut butter cups",
-        doesMatchSearch: true
+    id: Date.now(),
+    title: "",
+    description: "",
+    doesMatchSearch: true,
       },
-      {
-        id: 1,
-        title: "sleep",
-        description: "eight hours",
-        doesMatchSearch: true
-      },
-      {
-        id: 2,
-        title: "code",
-        description: "build an awesome ui",
-        doesMatchSearch: true
-      }
     ],
-    searchText: "SEARCH"
+    searchText: "",
   };
+
+  addNote = () => {
+    // create a new note object
+const newNote = {
+  id: Date.now(),
+  title: "",
+  description: "",
+  doesMatchSearch: true,
+};
+    // add the new note to the existing notes array in State
+ // const newNote = [newNote, ...this.state.notes];
+    this.setState({ notes: [newNote, ...this.state.notes]})
+    
+}
+
+
+
   render() {
     return (
       <div>
-        <Header searchText={this.state.searchText} />
+        <Header addNote={this.addNote} searchText={this.state.searchText} />
         <NotesList notes={this.state.notes} />
       </div>
     );
